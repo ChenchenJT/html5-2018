@@ -34,9 +34,9 @@ App({
         }
       }
     })
-    if(wx.getStorageSync('menu')==""){
-    wx.setStorageSync('menu', this.globalData.topText)}
-    else{
+    if (wx.getStorageSync('menu') == "") {
+      wx.setStorageSync('menu', this.globalData.topText)
+    } else {
       this.globalData.topText = wx.getStorageSync('menu')
     }
   },
@@ -44,12 +44,8 @@ App({
   globalData: {
     userInfo: null,
     topText: [{
-        name: '菜单左滑可以删除哦'
-      },
-      {
-        name: '添加好菜单就去首页吧'
-      }
-    ],
+      name: '请添加菜单哦'
+    }],
   },
   Touches: new Touches()
 })

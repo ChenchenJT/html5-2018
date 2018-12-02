@@ -6,7 +6,7 @@
     </view>
     <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
       <view class="weui-media-box__title" style="color: #ffffff;">陈嘉涛</view>
-      <view class="weui-media-box__desc" style="color: #ffffff;">惠州学院大三学生</view>
+      <view class="weui-media-box__desc" style="color: #ffffff;">惠州学院软件工程专业大三学生</view>
     </view>
   </navigator>
 </view>
@@ -18,13 +18,6 @@
     </view>
     <view class="weui-cell__bd">性别</view>
     <view class="weui-cell__ft">男</view>
-  </view>
-  <view class="weui-cell">
-    <view class="weui-cell__hd">
-      <image src="../../Image/icon/icon_school.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
-    </view>
-    <view class="weui-cell__bd">就读院校</view>
-    <view class="weui-cell__ft">惠州学院</view>
   </view>
   <view class="weui-cell">
     <view class="weui-cell__hd">
@@ -44,8 +37,16 @@
     <view class="weui-cell__ft">764774222@qq.com</view>
   </view>
 </view>
+<view class="weui-cells__title">指导老师及其联系方式</view>
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell">
+    <view class="weui-cell__hd">
+      <image src="../../Image/icon/icon_user.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+    </view>
+    <view class="weui-cell__bd">ZSN</view>
+    <view class="weui-cell__ft">公众号：WeScholar</view>
+  </view>
+</view>
 <view class="weui-cells__title mini">关于小程序</view>
 <view style='font-size:15px; padding-left:13px;'>欢迎使用这个小程序！这个小程序是由个人独立开发的，想法的由来就是生活中遇到用餐时间却不知道要吃什么的烦恼。希望这个小程序可以帮你们解决类似的烦恼。最后，这个小程序还有很多不足，有什么疑问可以联系我哦。</view>
-<view class="weui-footer weui-footer_fixed-bottom">
-  <view class="weui-footer__text">Copyright © 2018 ChenchenJT</view>
-</view>
+<button class="weui-btn" type="primary" bindtap='jumpMiniProgram' style='width:80%; margin-top:10px;'>通过“小留言板”给我留言</button>

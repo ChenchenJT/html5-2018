@@ -3,7 +3,7 @@
 
   <!-- 头像和名称显示 -->
   <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 点击授权信息</button>
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="weui-btn" type="primary" plain="true" style='margin-top:30px;'> 点击授权信息</button>
     <block wx:else>
       <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
     </block>
@@ -31,10 +31,17 @@
         <image style='width:70px; height:70px;' src='../../Image/icon/poweroff-circle-fill.png' bindtap='add'></image>
         <text>添加菜单</text>
       </view>
-      <view class='play'>
+      
+      <view class='play' wx:if="{{stopOrStart}}">
         <image style='width:70px; height:70px;' src='../../Image/icon/check-circle-fill.png' bindtap='play'></image>
         <text>开始选择</text>
       </view>
+      <block wx:else>
+      <view class='stop'>
+        <image style='width:70px; height:70px;' src='../../Image/icon/poweroff-circle-fill2.png' bindtap='stop'></image>
+        <text>暂停选择</text>
+      </view>
+    </block>
     </view>
   </view>
 </view>

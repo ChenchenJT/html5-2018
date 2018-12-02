@@ -14,6 +14,7 @@ Page({
     text2: "快去添加菜单吧",
     text3: "",
     userInfo: {},
+    stopOrStart: true,
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
@@ -22,6 +23,16 @@ Page({
     app.globalData.topText = wx.getStorageSync('menu');
     for (var i = 0; i < app.globalData.topText.length; i++) {
       name[i] = app.globalData.topText[i].name;
+    }
+    if (app.globalData.topText.length >= 3) {
+      var random7 = Math.floor(Math.random() * app.globalData.topText.length);
+      var random8 = Math.floor(Math.random() * app.globalData.topText.length);
+      var random9 = Math.floor(Math.random() * app.globalData.topText.length);
+      this.setData({
+        text1: app.globalData.topText[random7].name,
+        text2: app.globalData.topText[random8].name,
+        text3: app.globalData.topText[random9].name
+      })
     }
   },
 
@@ -83,6 +94,14 @@ Page({
     }
   },
 
+  //开始选择后跳转界面让动画停下来
+  onHide: function() {
+    this.setData({
+      stopOrStart: true
+    })
+    clearInterval(animateinterval);
+  },
+
   getUserInfo: function(e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
@@ -92,7 +111,7 @@ Page({
     })
   },
 
-  // 文字闪烁动画
+  // 文字闪烁动画并且判断菜单里的菜数是否满足条件
   play: function() { //endText最终显示文字，texts闪烁文字，time延迟时间,spacetime闪烁频率,stime闪烁周期
     if (app.globalData.topText.length == 0) {
       wx.showModal({
@@ -109,7 +128,7 @@ Page({
           }
         }
       })
-    } else if (app.globalData.topText.length > 0&& app.globalData.topText.length < 3){
+    } else if (app.globalData.topText.length > 0 && app.globalData.topText.length < 3) {
       wx.showModal({
         title: '提示',
         content: '菜单里面的菜太少了哦，快去添加多一点吧',
@@ -125,6 +144,9 @@ Page({
         }
       })
     } else {
+      this.setData({
+        stopOrStart: false
+      })
       var random1 = Math.floor(Math.random() * app.globalData.topText.length);
       var random2 = Math.floor(Math.random() * app.globalData.topText.length);
       var random3 = Math.floor(Math.random() * app.globalData.topText.length);
@@ -133,19 +155,19 @@ Page({
         texts: name,
         beginTime: 0,
         spacetime: 100,
-        stime: 1000
+        stime: 50000
       }, {
         endText: app.globalData.topText[random2].name,
         texts: name,
         beginTime: 0,
         spacetime: 100,
-        stime: 1000
+        stime: 50000
       }, {
         endText: app.globalData.topText[random3].name,
         texts: name,
         beginTime: 0,
         spacetime: 100,
-        stime: 1000
+        stime: 50000
       }]
       var that = this;
       for (var i = 0; i < rangArr.length; i++) {
@@ -200,12 +222,34 @@ Page({
     }
   },
 
-  add: function() {
+  //暂停选择
+  stop: function() {
     this.setData({
-      text2: ""
+      stopOrStart: true
     })
+    var random4 = Math.floor(Math.random() * app.globalData.topText.length);
+    var random5 = Math.floor(Math.random() * app.globalData.topText.length);
+    var random6 = Math.floor(Math.random() * app.globalData.topText.length);
+    this.setData({
+      text1: app.globalData.topText[random4].name,
+      text2: app.globalData.topText[random5].name,
+      text3: app.globalData.topText[random6].name
+    })
+    clearInterval(animateinterval);
+  },
+
+  //添加菜单
+  add: function() {
     wx.navigateTo({
       url: '../add/add'
     })
+  },
+
+  //分享
+  onShareAppMessage: function() {
+    return {
+      title: '让我来帮你选择要吃什么吧',
+      path: 'pages/login/login'
+    }
   }
 })

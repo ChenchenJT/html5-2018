@@ -51,5 +51,12 @@ Page({
     wx.switchTab({
       url: '../index/index',
     })
+  },
+  
+  onShareAppMessage: function () {
+    return {
+      title: '让我来帮你选择要吃什么吧',
+      path: 'pages/login/login'
+    }
   }
 })

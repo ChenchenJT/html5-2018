@@ -65,6 +65,15 @@
 .info-desc .name {
   font-size: 40rpx;
   color: black;
-  font-weight: 500;
   padding-left: 10px;
+}
+
+.btn {
+  width: 100%;
+  position: fixed;
+  bottom: 10px;
+}
+
+.btn button {
+  width: 80%;
 }

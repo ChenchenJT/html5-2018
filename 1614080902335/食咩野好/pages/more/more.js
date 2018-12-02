@@ -44,5 +44,12 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+  },
+  
+  onShareAppMessage: function () {
+    return {
+      title: '让我来帮你选择要吃什么吧',
+      path: 'pages/login/login'
+    }
   }
 })
